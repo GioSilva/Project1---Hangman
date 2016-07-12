@@ -10,17 +10,25 @@ $(document).on("ready", function() {
   var splitWord = random.split("");
    console.log(splitWord)
 
+  //  Creating number of underscores equal to number of letters in splitWord. They will be kept in an array called blankSpaces.
   var wordLength = splitWord.length;
-
   var underscores = "";
+  var blankSpaces = [];
 
-  for(i=0; i<wordLength; i++) {
+    for(i=0; i<wordLength; i++) {
     underscores = underscores + "_ "
     }
     console.log(underscores)
-    // $("body").append("<div>_</div>");
 
+    // Displaying underscores on screen
     $(".spaces").html(underscores);
+
+    // Pushing underscores to blankSpaces array
+    blankSpaces.push(underscores);
+
+    console.log(blankSpaces)
+
+  // var slot =  $(".spaces").append("<div>_</div>");
 
   // Preventing default
   $(".button").on("click", function(evt){
