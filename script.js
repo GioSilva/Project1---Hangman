@@ -1,6 +1,6 @@
 $(document).on("ready", function() {
   console.log("Hangmanned")
-  var words = ["html", "javascript", "jquery", "laptop", "statement", "pizza", "argument", "linux", "gui"];
+  var words = ["html", "javascript", "jquery", "laptop", "statement", "pizza", "argument", "linux", "gui", "git", "commit", "github"];
   var userChoices = [];
 
   // Selecting a random word from 'words' array:
@@ -25,9 +25,9 @@ $(document).on("ready", function() {
     $("#missingWord").html(underscores);
 
     // Pushing underscores to blankSpaces array
-    blankSpaces.push(underscores);
-
-    console.log(blankSpaces)
+    // blankSpaces.push(underscores);
+    //
+    // console.log(blankSpaces)
 
 // USER INPUT
 
@@ -47,13 +47,14 @@ $(document).on("ready", function() {
 
     var TrueOrFalse = splitWord.includes(newInput);
 
-    // Console.log just to make sure everything's working:
+    // Console.log just to make sure true and false values are working:
     console.log(TrueOrFalse);
 
+    // Replacing underscores with correct letter, displaying wrong letters at the bottom
     if (TrueOrFalse) {
       for(i=0; i<splitWord.length; i++) {
         if (newInput === splitWord[i]) {
-          var name = 'letter_' + (i+1);
+          var name = "letter_" + (i+1);
           $("#" + name).html(newInput);
         }
       }
@@ -65,14 +66,6 @@ $(document).on("ready", function() {
     console.log()
         $("#guess > .input").val("")
 
-    // var wrongLetters = newInput +
 
-
-
-    // if (TrueOrFalse == true) {
-    //   console.log("Good guess!")
-    // } else {
-    //   $(".wrongs").html(newInput);
-    // }
   })
 })
