@@ -1,6 +1,17 @@
 header {
   text-align: center;
 }
+#guess {
+  font-size: 1.5em;
+  font-family: arial;
+}
 .spaces {
   font-size: 5em;
+}
+.wrongs {
+  margin-top: 300;
+  font-size: 3em;
+  font-family: arial;
+  text-align: left;
+  text-transform: capitalize;
 }

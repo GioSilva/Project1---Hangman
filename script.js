@@ -16,19 +16,20 @@ $(document).on("ready", function() {
   var blankSpaces = [];
 
     for(i=0; i<wordLength; i++) {
-    underscores = underscores + "_ "
+      var name = "letter_" + (i+1);
+    underscores += "<span class='spaces' id='" + name + "'>_ </span>";
     }
     console.log(underscores)
 
     // Displaying underscores on screen
-    $(".spaces").html(underscores);
+    $("#missingWord").html(underscores);
 
     // Pushing underscores to blankSpaces array
     blankSpaces.push(underscores);
 
     console.log(blankSpaces)
 
-  // var slot =  $(".spaces").append("<div>_</div>");
+// USER INPUT
 
   // Preventing default
   $(".button").on("click", function(evt){
@@ -43,21 +44,35 @@ $(document).on("ready", function() {
     console.log(userChoices)
 
     // Checking if user letter matches letter in random word
+
     var TrueOrFalse = splitWord.includes(newInput);
 
     // Console.log just to make sure everything's working:
     console.log(TrueOrFalse);
 
+    if (TrueOrFalse) {
+      for(i=0; i<splitWord.length; i++) {
+        if (newInput === splitWord[i]) {
+          var name = 'letter_' + (i+1);
+          $("#" + name).html(newInput);
+        }
+      }
+    } else {
+      var currentWrongs = $("#wrongLetters").html();
+      currentWrongs += " " + newInput;
+      $("#wrongLetters").html(currentWrongs);
+    }
     console.log()
         $("#guess > .input").val("")
 
+    // var wrongLetters = newInput +
 
-    // if (TrueOrFalse == "True") {
+
+
+    // if (TrueOrFalse == true) {
     //   console.log("Good guess!")
     // } else {
-    //   console.log("1 step closer to death")
+    //   $(".wrongs").html(newInput);
     // }
-
-
   })
 })
