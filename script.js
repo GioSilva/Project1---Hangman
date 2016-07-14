@@ -24,7 +24,7 @@ $(document).on("ready", function() {
 
     // Displaying underscores on screen
     $("#missingWord").html(underscores);
-    $("#wrongLetters").html("");
+    // $("#wrongLetters").html("");
 
 // USER INPUT
 
