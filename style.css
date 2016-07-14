@@ -1,6 +1,5 @@
 header {
   text-align: center;
-
 }
 #guess {
   font-size: 1.5em;
@@ -10,22 +9,20 @@ header {
   border-color: black;
   font-size: 100%;
   border-style: double;
-
+  width: 12%;
 }
 .button {
   color: white;
-  font-size: 100%;
+  font-size: 90%;
   background-color: black;
   border-color: transparent;
 }
-
 .spaces {
-  margin-top: 100px;
   font-size: 5em;
   font-family: arial;
   text-transform: uppercase;
 }
-#gallows {
+.gallows {
   text-align: right;
   float: inline-start;
   margin-right: 140px;
@@ -33,7 +30,7 @@ header {
 }
 .wrongs {
   color: red;
-  font-size: 3em;
+  font-size: 4em;
   font-family: arial;
   text-align: left;
   text-transform: capitalize;

@@ -2,6 +2,7 @@ $(document).on("ready", function() {
   console.log("Hangmanned")
   var words = ["html", "javascript", "jquery", "laptop", "statement", "pizza", "argument", "linux", "gui", "git", "commit", "github"];
   var userChoices = [];
+  var userAnswer = [];
 
   // Selecting a random word from 'words' array:
   var random = words[Math.floor(Math.random() * words.length)];
@@ -23,11 +24,7 @@ $(document).on("ready", function() {
 
     // Displaying underscores on screen
     $("#missingWord").html(underscores);
-
-    // Pushing underscores to blankSpaces array
-    // blankSpaces.push(underscores);
-    //
-    // console.log(blankSpaces)
+    $("#wrongLetters").html("");
 
 // USER INPUT
 
@@ -47,7 +44,7 @@ $(document).on("ready", function() {
 
     var TrueOrFalse = splitWord.includes(newInput);
 
-    // Console.log just to make sure true and false values are working:
+    // Console.log to make sure true and false values are working:
     console.log(TrueOrFalse);
 
     // Replacing underscores with correct letter, displaying wrong letters at the bottom
@@ -56,16 +53,27 @@ $(document).on("ready", function() {
         if (newInput === splitWord[i]) {
           var name = "letter_" + (i+1);
           $("#" + name).html(newInput);
+          userAnswer[i] = newInput;
+          var newAnswer = userAnswer.join('');
+          console.log ("the user value = " + newAnswer);
+          if (newAnswer === random) {
+            $("#wrongLetters").html("Game Over!!! You guessed correctly. Please refresh for new game." );
+            $(".button").attr("disabled", true);
+            $("#guess > .input").attr("disabled", true);
+          }
         }
       }
     } else {
       var currentWrongs = $("#wrongLetters").html();
       currentWrongs += " " + newInput;
       $("#wrongLetters").html(currentWrongs);
+      }
     }
+
+    // Clearing input box
     console.log()
         $("#guess > .input").val("")
 
-
   })
+
 })
