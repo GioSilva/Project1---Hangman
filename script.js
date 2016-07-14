@@ -1,6 +1,6 @@
 $(document).on("ready", function() {
   console.log("Hangmanned")
-  var words = ["html", "javascript", "jquery", "laptop", "statement", "pizza", "argument", "linux", "gui", "git", "commit", "github"];
+  var words = ["html", "javascript", "jquery", "laptop", "statement", "pizza", "argument", "linux", "gui", "git", "commit", "github", "repository", "debug", "append"];
   var userChoices = [];
   var userAnswer = [];
 
@@ -53,20 +53,37 @@ $(document).on("ready", function() {
         if (newInput === splitWord[i]) {
           var name = "letter_" + (i+1);
           $("#" + name).html(newInput);
+      // Adding value to userAnswer array, in the correct position inside the array
           userAnswer[i] = newInput;
+      // Converting userAnswer into a string that will be compared with the original random word. Once they are equal, it means the user won and the game is over.
           var newAnswer = userAnswer.join('');
+      // Console.log to check if newAnswer is working
           console.log ("the user value = " + newAnswer);
           if (newAnswer === random) {
-            $("#wrongLetters").html("Game Over!!! You guessed correctly. Please refresh for new game." );
+            $("#wrongLetters").html("Correct! You are still alive. Refresh for new game." );
+      // Disabling input box and 'Go' button once the game is over
             $(".button").attr("disabled", true);
             $("#guess > .input").attr("disabled", true);
           }
         }
       }
     } else {
+    // Displaying wrong letters at the bottom of the page
       var currentWrongs = $("#wrongLetters").html();
       currentWrongs += " " + newInput;
       $("#wrongLetters").html(currentWrongs);
+    // Displaying hangman images in sequence. First, currentWrongs is broken down and its length is defined
+      var imgCount = currentWrongs.trim().split(" ").length;
+    // Console.log to make sure we are getting a sequence of numbers out of the previous action
+      console.log("the image entry = " + imgCount);
+    // Creating variable imgName to put together the sequence of jpg files and replacing the gallows image
+      var imgName = "images/deadman_" + imgCount + ".jpg";
+      $(".gallows").html("<img src='" + imgName + "' height='400'>");
+    // Game over once the drawing is complete
+      if (imgCount > 5) {
+        $("#wrongLetters").html("You're dead! The answer is '" + random + "'. Refresh for new game." );
+        $(".button").attr("disabled", true);
+        $("#guess > .input").attr("disabled", true);
       }
     }
 

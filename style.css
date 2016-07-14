@@ -33,5 +33,5 @@ header {
   font-size: 4em;
   font-family: arial;
   text-align: left;
-  text-transform: capitalize;
+  text-transform: uppercase;
 }
